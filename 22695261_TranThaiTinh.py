@@ -133,3 +133,5 @@ print("3. Bài 4.")
 choice = int(input("Mời bạn nhập lựa chọn: "))
 
 menu(choice)
+
+# code provided by Tran Thai Tinh
