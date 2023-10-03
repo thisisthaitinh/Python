@@ -5,17 +5,16 @@ from prettytable import PrettyTable
 
 # thong tin sinh vien
 def studentInformation():
-    print("MSSV: 22695261")
-    print("Họ và tên: Trần Thái Tính")
-    print("Lớp: KHMT18BTT")
+    print("Thông tin sinh viên: ")
+    print("- MSSV: 22695261")
+    print("- Họ và tên: Trần Thái Tính")
+    print("- Lớp: KHMT18BTT")
 
 
 # menu
 def menu(arg):
     if arg == 1:
-        a = int(input("Nhập a: "))
-        b = int(input("Nhập b: "))
-        Cau2(a, b)
+        Cau2()
     elif arg == 2:
         Cau3()
     elif arg == 3:
@@ -36,7 +35,9 @@ def USCLN(a, b):
 
 
 # cau 2
-def Cau2(a, b):
+def Cau2():
+    a = int(input("\tNhập a: "))
+    b = int(input("\tNhập b: "))
     print("Ước số chung lớn nhất của " + str(a) + " và " + str(b) + " là: " + str(USCLN(a, b)))
     print("Bội số chung nhỏ nhất của " + str(a) + " và " + str(b) + " là: " + str(ceil(a * b / USCLN(a, b))))
 
@@ -64,9 +65,9 @@ def is_lucky(num):
 def Cau3():
     list_A = []
     list_B = []
-    n = int(input("List A: "))
+    n = int(input("\nNhập số phần tử của List A: "))
     for i in range(0, n):
-        x = int(input())
+        x = int(input("\tPhần tử thứ {}: ".format(i + 1)))
         list_A.append(x)
     sum_A = sum(list_A)
 
@@ -74,10 +75,14 @@ def Cau3():
     sum_primes = sum(prime_numbers)
 
     lucky_numbers = [num for num in list_A if is_lucky(num)]
+    print("Tổng các phần tử trong list A:", sum_A)
+    print("Các số nguyên tố trong list A:", *prime_numbers, sep=", ")
+    print("Tổng các số nguyên tố trong list A:", sum_primes)
+    print("Số may mắn trong list A:", *lucky_numbers, sep=", ")
 
-    m = int(input("List B: "))
+    m = int(input("\nNhập số phần tử của list B: "))
     for i in range(0, m):
-        y = int(input())
+        y = int(input("\tPhần tử thứ {}: ".format(i + 1)))
         list_B.append(y)
 
     list_C = sorted(list_A + list_B)
@@ -92,21 +97,18 @@ def Cau3():
 
     table.align = "c"  # Set alignment to "middle"
 
-    print("Tổng các phần tử trong list A:", sum_A)
-    print("Các số nguyên tố trong list A:", *prime_numbers, sep=", ")
-    print("Tổng các số nguyên tố trong list A:", sum_primes)
-    print("Số may mắn trong list A:", *lucky_numbers, sep=", ")
     print("List C:", *list_C, sep=", ")
+    print("\nHiển thị danh sách dưới dạng bảng: ")
     print(table)
 
 
 # cau 4
 def Cau4():
     sinhvien = []
-    n = int(input("Nhập số lượng sinh viên: "))
+    n = int(input("\nNhập số lượng sinh viên: "))
     for i in range(n):
-        name = input("Sinh viên thứ {}: ".format(i + 1))
-        result = float(input("Điểm: "))
+        name = input("\tSinh viên thứ {}: ".format(i + 1))
+        result = float(input("\tĐiểm: "))
         sinhvien.append({'name': name, 'result': result})
 
     print_results(sinhvien)
@@ -124,7 +126,7 @@ def print_results(sinhvien):
 
     print("Sinh viên có kết quả cao nhất: {} (Điểm: {}).".format(highest_result['name'], highest_result['result']))
     print("Sinh viên có kết quả thấp nhất: {} (Điểm: {}).".format(lowest_result['name'], lowest_result['result']))
-    print("Sắp xếp các sinh viên theo kết quả học tập tăng dần: ")
+    print("\nSắp xếp các sinh viên theo kết quả học tập tăng dần: ")
     print(table)
 
 
