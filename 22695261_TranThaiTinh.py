@@ -2,11 +2,13 @@
 from math import ceil
 from prettytable import PrettyTable
 
+
 # thong tin sinh vien
 def studentInformation():
     print("MSSV: 22695261")
     print("Họ và tên: Trần Thái Tính")
     print("Lớp: KHMT18BTT")
+
 
 # menu
 def menu(arg):
@@ -36,7 +38,7 @@ def USCLN(a, b):
 # cau 2
 def Cau2(a, b):
     print("Ước số chung lớn nhất của " + str(a) + " và " + str(b) + " là: " + str(USCLN(a, b)))
-    print("Bội số chung nhỏ nhất của " + str(a) + " và " + str(b) + " là: " + str(a * b * USCLN(a, b)))
+    print("Bội số chung nhỏ nhất của " + str(a) + " và " + str(b) + " là: " + str(ceil(a * b / USCLN(a, b))))
 
 
 # kiem tra so nguyen to
@@ -78,7 +80,7 @@ def Cau3():
         y = int(input())
         list_B.append(y)
 
-    list_C = list_A + list_B
+    list_C = sorted(list_A + list_B)
 
     table = PrettyTable()
     table.field_names = ["List A", "List B", "Số nguyên tố trong list A", "Số may mắn trong list A", "List C"]
@@ -104,10 +106,11 @@ def Cau4():
     n = int(input("Nhập số lượng sinh viên: "))
     for i in range(n):
         name = input("Sinh viên thứ {}: ".format(i + 1))
-        result = float(input("Điểm {}: ".format(i + 1)))
+        result = float(input("Điểm: "))
         sinhvien.append({'name': name, 'result': result})
 
     print_results(sinhvien)
+
 
 def print_results(sinhvien):
     highest_result = max(sinhvien, key=lambda x: x['result'])
@@ -119,17 +122,17 @@ def print_results(sinhvien):
     for student in sorted_sinhvien:
         table.add_row([student['name'], student['result']])
 
-    print("Sinh viên có kết quả cao nhất: {} (Điểm: {})".format(highest_result['name'], highest_result['result']))
-    print("Sinh viên có kết quả thấp nhất: {} (Điểm: {})".format(lowest_result['name'], lowest_result['result']))
-    print("Sắp xếp các sinh viên theo thứ tự điểm tăng dần: ")
+    print("Sinh viên có kết quả cao nhất: {} (Điểm: {}).".format(highest_result['name'], highest_result['result']))
+    print("Sinh viên có kết quả thấp nhất: {} (Điểm: {}).".format(lowest_result['name'], lowest_result['result']))
+    print("Sắp xếp các sinh viên theo kết quả học tập tăng dần: ")
     print(table)
 
 
 studentInformation()
 
-print("1. Tìm ước số chung lớn nhất và bội số chung nhỏ nhất.")
-print("2. Bài 3.")
-print("3. Bài 4.")
+print("1. Câu 2 (2.0 điểm).")
+print("2. Câu 3 (4.0 điểm).")
+print("3. Câu 4 (3.0 điểm).")
 choice = int(input("Mời bạn nhập lựa chọn: "))
 
 menu(choice)
