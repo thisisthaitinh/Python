@@ -1,0 +1,109 @@
+struct Node {
+    int data;
+    struct Node* pNext;
+};
+
+struct List {
+    struct Node* pHead;
+    struct Node* pTail;
+};
+
+void Init(struct List& pList) {
+    pList.pHead = NULL;
+    pList.pTail = NULL;
+}
+
+void AppendList(struct List& pList, int* arr, int size) {
+    for (int i = 0; i < size; i++) {
+        struct Node* newNode = new Node;
+        newNode->data = arr[i];
+        newNode->pNext = NULL;
+
+        if (pList.pHead == NULL) {
+            pList.pHead = newNode;
+            pList.pTail = newNode;
+        } else {
+            pList.pTail->pNext = newNode;
+            pList.pTail = newNode;
+        }
+    }
+}
+
+int RemoveHead(struct List& pList) {
+    if (pList.pHead == NULL) {
+        return 0;
+    } else {
+        struct Node* oldHead = pList.pHead;
+        int value = oldHead->data;
+        pList.pHead = oldHead->pNext;
+
+        if (pList.pHead == NULL) {
+            pList.pTail = NULL;
+        }
+
+        delete oldHead;
+        return value;
+    }
+}
+
+
+
+struct Node {
+    int data;
+    struct Node* pNext;
+};
+
+struct List {
+    Node* pHead;
+    Node* pTail;
+};
+
+void Init(List& pList) {
+    pList.pHead = NULL;
+    pList.pTail = NULL;
+}
+
+void AppendList(struct List& pList, int* arr, int size) {
+    for (int i = 0; i < size; i++) {
+        struct Node* newNode = new Node;
+        newNode->data = arr[i];
+        newNode->pNext = NULL;
+
+        if (pList.pHead == NULL) {
+            pList.pHead = newNode;
+            pList.pTail = newNode;
+        } else {
+            pList.pTail->pNext = newNode;
+            pList.pTail = newNode;
+        }
+    }
+}
+
+int RemoveNodesK(struct List& pList, int k) {
+    int count = 0;
+    struct Node* current = pList.pHead;
+    struct Node* previous = NULL;
+
+    while (current != NULL) {
+        if (current->data == k) {
+            struct Node* temp = current;
+            if (previous == NULL) {
+                pList.pHead = current->pNext;
+            } else {
+                previous->pNext = current->pNext;
+            }
+            current = current->pNext;
+            free(temp);
+            count++;
+        } else {
+            previous = current;
+            current = current->pNext;
+        }
+    }
+
+    if (pList.pHead == NULL) {
+        pList.pTail = NULL;
+    }
+
+    return count;
+}

@@ -1,0 +1,103 @@
+struct BirthDay{
+    int day;
+    int month ;
+    double year;
+};
+
+struct Student{
+    string ID;
+    string Name;
+    string Gender;
+    BirthDay Born;
+};
+
+struct Node
+{
+    Student data;
+    Node* link;  
+};
+
+struct ListStudent
+{
+    Node* first;
+    Node* last;
+};
+
+void Initial(ListStudent& list) {
+    list.first = list.last = NULL;
+}
+
+void InsertLast(ListStudent& list, Student& std) {
+    Node* newNode = new Node;
+    newNode->data = std;
+    newNode->link = NULL;
+    
+    if (list.last == NULL) {
+        list.first = newNode;
+        list.last = newNode;
+    }
+    else {
+        list.last->link = newNode;
+        list.last = newNode;
+    }
+}
+
+void ShowListStudent(ListStudent& list) {
+    Node* current = list.first;
+    while (current != NULL) {
+        Student std = current->data;
+        std::cout << std.ID << "\t" << std.Name << "\t" << std.Gender << "\t" << std.Born.month << "/" << std.Born.day << "/" << std.Born.year << std::endl;
+        current = current->link;
+    }
+}
+
+
+struct BirthDay{
+    int day;
+    int month ;
+    double year;
+};
+
+struct Student{
+    string ID;
+    string Name;
+    string Gender;
+    BirthDay Born;
+};
+
+struct Node
+{
+    Student data;
+    Node* link;  
+};
+
+struct ListStudent
+{
+    Node* first;
+    Node* last;
+};
+
+void Initial(ListStudent& list) {
+    list.first = list.last = NULL;
+}
+
+// InsertFirst function
+void InsertFirst(ListStudent& list, Student& std) {
+    Node* newNode = new Node;
+    newNode->data = std;
+    newNode->link = list.first;
+
+    if (list.first == NULL) {
+        list.last = newNode;
+    }
+    list.first = newNode;
+}
+
+void ShowListStudent(ListStudent& list) {
+    Node* current = list.first;
+    while (current != NULL) {
+        Student std = current->data;
+        std::cout << std.ID << "\t" << std.Name << "\t" << std.Gender << "\t" << std.Born.month << "/" << std.Born.day << "/" << std.Born.year << std::endl;
+        current = current->link;
+    }
+}
